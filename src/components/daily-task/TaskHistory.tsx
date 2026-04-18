@@ -4,7 +4,11 @@ interface TaskRecord {
   id: string;
   bin_location: string;
   completed_at: string;
+  bin_area: string;
+  bin_subarea: string;
+  sensor_id: string;
 }
+
 
 interface Props {
   tasks: TaskRecord[];
@@ -27,7 +31,7 @@ export default function TaskHistory({ tasks }: Props) {
               <div key={t.id} className="flex items-center justify-between px-4 py-3 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-3.5 w-3.5 text-primary" />
-                  <span className="text-sm font-medium">{t.bin_location}</span>
+                  <span className="text-sm font-medium">{t.sensor_id} <span className='text-xs opacity-60 ml-1'>   {"-" + t.bin_subarea }</span> </span>
                 </div>
                 <div className="text-right">
                   <p className="text-xs font-medium">{d.toLocaleDateString()}</p>

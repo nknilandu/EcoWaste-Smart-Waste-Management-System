@@ -189,7 +189,10 @@ export default function CitizenDashboard() {
         const bin = bins.find((b) => b.id === t.bin_id);
         return {
           id: t.id,
+          sensor_id: bin?.sensor_id || "Unknown",
           bin_location: bin?.location || "Unknown",
+          bin_area: bin?.area || "Unknown",
+          bin_subarea: bin?.subarea || "Unknown",
           completed_at: t.completed_at!,
         };
       });
