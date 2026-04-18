@@ -61,7 +61,7 @@ export default function Navbar() {
   const privateItems: PrivateItem[] = [
     { label: "Home", to: "/", icon: Home },
     { label: "Dashboard", to: dashboardPath, icon: LayoutGrid },
-    { label: "Dashboard", to: "/Profile", icon: UserRound },
+    { label: "Profile", to: "/Profile", icon: UserRound },
   ];
 
   const avatarUrl =
