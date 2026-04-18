@@ -5,10 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/lib/auth-context";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import Profile from "@/pages/Profile";
@@ -16,6 +13,7 @@ import AdminDashboard from "@/pages/AdminDashboard";
 import CollectorDashboard from "@/pages/CollectorDashboard";
 import CitizenDashboard from "@/pages/CitizenDashboard";
 import NotFound from "@/pages/NotFound";
+import { Footer } from "./components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -28,8 +26,6 @@ const App = () => (
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
@@ -38,7 +34,7 @@ const App = () => (
             <Route path="/collector" element={<ProtectedRoute allowedRoles={['collector']}><CollectorDashboard /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Footer />
+          <Footer></Footer>
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>

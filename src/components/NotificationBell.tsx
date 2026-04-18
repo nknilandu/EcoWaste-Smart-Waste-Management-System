@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Bell, Check, X } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/lib/auth-context';
+import { cn } from "@/lib/utils";
 
 interface Notification {
   id: string;
@@ -12,11 +13,21 @@ interface Notification {
   created_at: string;
 }
 
-export default function NotificationBell() {
+type Props = {
+  isHomePage: boolean;
+  scrolled: boolean;
+};
+
+export default function NotificationBell({ isHomePage, scrolled }: Props) {
+
+
+
   const { user } = useAuth();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  
 
   useEffect(() => {
     if (!user) return;
@@ -73,7 +84,13 @@ export default function NotificationBell() {
 
   return (
     <div className="relative" ref={ref}>
-      <button onClick={() => setOpen(!open)} className="relative p-2.5 rounded-xl hover:bg-secondary transition-colors">
+      <button onClick={() => setOpen(!open)}   className={cn(
+    "relative flex items-center justify-center rounded-full p-2.5 transition-all duration-200 border",
+    isHomePage && !scrolled
+      ? "bg-white/10 border-white/15 text-white hover:bg-white/15"
+      : "bg-background/70 border-border text-foreground hover:bg-muted"
+  )}>
+
         <Bell className="h-5 w-5 text-muted-foreground" />
         {unread > 0 && (
           <span className="absolute -top-0.5 -right-0.5 h-5 w-5 rounded-full gradient-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center animate-scale-in shadow-sm">
@@ -88,6 +105,7 @@ export default function NotificationBell() {
             <h3 className="font-semibold text-sm">Notifications</h3>
             {unread > 0 && (
               <button onClick={markAllRead} className="text-xs text-primary hover:underline flex items-center gap-1">
+                
                 <Check className="h-3 w-3" /> Mark all read
               </button>
             )}

@@ -105,7 +105,7 @@ function SimpleBarChart({
   title,
 }: {
   data: { label: string; value: number; color: string }[];
-  
+
   title: string;
 }) {
   const max = Math.max(...data.map((d) => d.value), 1);
@@ -117,15 +117,15 @@ function SimpleBarChart({
           <div key={i} className="flex-1 flex flex-col items-center gap-1">
             <span className="text-xs font-semibold">{d.value}</span>
             <div className="w-full flex flex-col items-center justify-end h-24">
-  <div
-    className="w-full rounded-t-lg transition-all duration-700"
-    style={{
-      flexGrow: d.value === 0 ? 0.06 : d.value,
-      background: d.color,
-      minHeight: 2,
-    }}
-  />
-</div>
+              <div
+                className="w-full rounded-t-lg transition-all duration-700"
+                style={{
+                  flexGrow: d.value === 0 ? 0.06 : d.value,
+                  background: d.color,
+                  minHeight: 2,
+                }}
+              />
+            </div>
             <span className="text-[10px] text-muted-foreground text-center leading-tight mt-1">
               {d.label}
             </span>
@@ -312,20 +312,20 @@ export default function AdminDashboard() {
     fetchAll();
   };
 
- const createSchedule = async (form: {
-  bin_id: string;
-  collector_id: string;
-  pickup_time: string;
-}) => {
-  await supabase.from("collections").insert({
-    ...form,
-    status: "scheduled", 
-  });
+  const createSchedule = async (form: {
+    bin_id: string;
+    collector_id: string;
+    pickup_time: string;
+  }) => {
+    await supabase.from("collections").insert({
+      ...form,
+      status: "scheduled",
+    });
 
-  setShowScheduleForm(false);
-  fetchAll();
-  toast({ title: "Schedule created" });
-};
+    setShowScheduleForm(false);
+    fetchAll();
+    toast({ title: "Schedule created" });
+  };
 
   const fillColor = (level: number) =>
     level >= 80
@@ -379,7 +379,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background  pt-28">
       <div className="max-w-7xl mx-auto p-4 md:p-8 animate-fade-in">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
@@ -447,7 +447,7 @@ export default function AdminDashboard() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <SimpleBarChart data={chartData} title="Bin Status Overview" />
+              <SimpleBarChart data={chartData} title="Bin Status Overview" />
               <SimpleBarChart
                 data={[
                   {
@@ -818,8 +818,11 @@ export default function AdminDashboard() {
                   <div className="flex justify-between items-start">
                     <div>
                       <p className="font-medium">
-                        {bins.find((b) => b.id === c.bin_id)?.area ||
-                          c.bin_id} <span className="font-normal text-xs"> - {bins.find((b) => b.id === c.bin_id)?.subarea}</span>
+                        {bins.find((b) => b.id === c.bin_id)?.area || c.bin_id}{" "}
+                        <span className="font-normal text-xs">
+                          {" "}
+                          - {bins.find((b) => b.id === c.bin_id)?.subarea}
+                        </span>
                       </p>
                       <p className="text-xs text-muted-foreground mt-1">
                         {new Date(c.pickup_time).toLocaleString()}
@@ -833,7 +836,7 @@ export default function AdminDashboard() {
                     <span
                       className={`text-xs px-2.5 py-1 rounded-full font-medium ${scheduleStatusBadge(c.status)}`}
                     >
-                       {(c.status || "checking...").replace("_", " ")}
+                      {(c.status || "checking...").replace("_", " ")}
                     </span>
                   </div>
                 </div>
