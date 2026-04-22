@@ -366,7 +366,7 @@ export default function RegisterPage() {
                       : "text-muted-foreground"
                   }`}
                 >
-                  Citizen
+                  User
                 </span>
                 <span className="text-[11px] text-muted-foreground text-center">
                   Report issues & track bins
