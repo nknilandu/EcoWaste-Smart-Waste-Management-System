@@ -10,44 +10,41 @@
         <mxCell id="zQ8_GmaDmkocLwzpDFF--3" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;strokeColor=none;fillColor=none;" value="High Level Design Based on Layered Architecture Pattern" vertex="1">
           <mxGeometry height="22" width="580" x="565" y="178" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f2f2f2;strokeColor=#35A8DB;strokeWidth=2;shadow=1;" value="" vertex="1">
-          <mxGeometry height="105" width="760" x="475" y="280" as="geometry" />
+        <mxCell id="zQ8_GmaDmkocLwzpDFF--16" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Figure 3: High level architecture of the Smart Waste Management System based on layered architecture pattern&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="860" x="440" y="720" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--5" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;fontStyle=1;strokeColor=none;fillColor=none;" value="User Interface Layer" vertex="1">
-          <mxGeometry height="28" width="660" x="525" y="296" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-1" edge="1" parent="1" source="cdo4atSIRvRGMsY25v-0-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="cdo4atSIRvRGMsY25v-0-4">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--6" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;strokeColor=none;fillColor=none;" value="Admin Dashboard&lt;br/&gt;Citizen Web/Mobile Interface&lt;br/&gt;Collection Staff Panel" vertex="1">
-          <mxGeometry height="38" width="680" x="515" y="324" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF4FF;strokeColor=#6c8ebf;" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;• Citizen/User Dashboard&lt;br&gt;• Collector Dashboard&lt;br&gt;• Admin Dashboard&lt;br&gt;• Login / Register&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="430" x="640" y="230" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f2f2f2;strokeColor=#35A8DB;strokeWidth=2;shadow=1;" value="" vertex="1">
-          <mxGeometry height="105" width="760" x="475" y="425" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-3" edge="1" parent="1" source="cdo4atSIRvRGMsY25v-0-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="cdo4atSIRvRGMsY25v-0-6">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--8" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;fontStyle=1;strokeColor=none;fillColor=none;" value="Application Management Layer" vertex="1">
-          <mxGeometry height="28" width="660" x="525" y="441" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3FAF2;strokeColor=#82b366;" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;• Auth &amp;amp; Role Management&lt;br&gt;• Supabase API Handling&lt;br&gt;• Realtime Notifications&lt;br&gt;• Form Processing&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="430" x="640" y="350" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--9" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;strokeColor=none;fillColor=none;" value="Authentication &amp;amp; Authorization&lt;br/&gt;User/Bin Management&lt;br/&gt;Alert &amp;amp; Notification Service" vertex="1">
-          <mxGeometry height="38" width="680" x="515" y="469" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-5" edge="1" parent="1" source="cdo4atSIRvRGMsY25v-0-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="cdo4atSIRvRGMsY25v-0-7">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f2f2f2;strokeColor=#35A8DB;strokeWidth=2;shadow=1;" value="" vertex="1">
-          <mxGeometry height="105" width="760" x="475" y="570" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#d6b656;" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;• Bin Monitoring Logic&lt;br&gt;• Collection Workflow&lt;br&gt;• Complaint Management&lt;br&gt;• Notification Trigger System&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="430" x="640" y="470" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--11" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;fontStyle=1;strokeColor=none;fillColor=none;" value="Core Business Logic Layer" vertex="1">
-          <mxGeometry height="28" width="660" x="525" y="586" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEEEC;strokeColor=#b85450;" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;• Supabase Database&lt;br&gt;• Supabase Auth&lt;br&gt;• Realtime Engine&lt;br&gt;• IoT / Sensor Data&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="430" x="640" y="590" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--12" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;strokeColor=none;fillColor=none;" value="Bin Monitoring &amp;amp; Fill-Level Analysis&lt;br/&gt;Collection Scheduling &amp;amp; Route Coordination&lt;br/&gt;Complaint Handling &amp;amp; Reporting" vertex="1">
-          <mxGeometry height="38" width="680" x="515" y="614" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;arcSize=50;" value="&lt;b&gt;User Interface Layer&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="410" x="650" y="240" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f2f2f2;strokeColor=#35A8DB;strokeWidth=2;shadow=1;perimeterSpacing=0;" value="" vertex="1">
-          <mxGeometry height="105" width="760" x="475" y="715" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;arcSize=49;" value="&lt;b&gt;Application Service Layer&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="410" x="650" y="360" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--14" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=17;fontStyle=1;strokeColor=none;fillColor=none;" value="Infrastructure &amp;amp; Support Layer" vertex="1">
-          <mxGeometry height="28" width="660" x="525" y="731" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;arcSize=50;" value="&lt;b&gt;Business Logic Layer&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="410" x="650" y="480" as="geometry" />
         </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--15" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;strokeColor=none;fillColor=none;" value="IoT Smart Bins (ESP32 + Sensors)&lt;br/&gt;Backend Server / APIs&lt;br/&gt;Database, Cloud Storage, Maps &amp;amp; Messaging Services" vertex="1">
-          <mxGeometry height="38" width="680" x="515" y="759" as="geometry" />
-        </mxCell>
-        <mxCell id="zQ8_GmaDmkocLwzpDFF--16" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;strokeColor=none;fillColor=none;" value="Figure 3: High level architecture of the Smart Waste Management System based on layered architecture pattern" vertex="1">
-          <mxGeometry height="30" width="860" x="425" y="890" as="geometry" />
+        <mxCell id="cdo4atSIRvRGMsY25v-0-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;arcSize=50;" value="&lt;b&gt;Data &amp;amp; Infrastructure Layer&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="410" x="650" y="600" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
