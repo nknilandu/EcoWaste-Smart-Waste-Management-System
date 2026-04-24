@@ -1,0 +1,489 @@
+Build a modern full-stack smart waste management web application called “EcoWaste” using React + TypeScript + Tailwind CSS on the frontend and Supabase for authentication, database, realtime notifications, and role-based access control.
+
+This is a 3-role system:
+1. Citizen
+2. Collector
+3. Admin
+
+The app should feel production-quality in UI/UX, but keep the code modular, clean, and easy to maintain. Use a responsive dashboard-based layout with a polished landing page.
+
+==================================================
+CORE PRODUCT GOAL
+==================================================
+Create a Smart Waste Management System where:
+- Citizens can monitor nearby waste bins by area, submit complaints, complete daily waste disposal tasks, view notifications, and manage their profile.
+- Collectors can view assigned collection tasks, mark tasks in progress, complete collections, and update waste collection status.
+- Admins can manage waste bins, users, complaints, collectors, and collection schedules from a central dashboard.
+
+Use Supabase as the main backend and structure the app to work with existing tables and relational logic.
+
+==================================================
+TECH STACK REQUIREMENTS
+==================================================
+- React
+- TypeScript
+- Tailwind CSS
+- React Router
+- Supabase client
+- Realtime notifications through Supabase subscriptions
+- Clean component-based architecture
+- Responsive design for desktop/tablet/mobile
+- Use cards, charts, tables, dialogs, tabs, and sidebar navigation
+- Use toast messages for success/error feedback
+- Use loading skeletons or spinners where needed
+
+==================================================
+SUPABASE DATABASE STRUCTURE
+==================================================
+Use the following tables and relationships:
+
+1. profiles
+- id (uuid, primary key)
+- user_id (references auth.users.id)
+- full_name (text)
+- avatar_url (text)
+- area (text)
+- created_at (timestamp)
+- updated_at (timestamp)
+- email (text)
+
+2. user_roles
+- id (uuid, primary key)
+- user_id (references auth.users.id)
+- role (text) -> citizen, collector, admin
+
+3. bins
+- id (uuid, primary key)
+- location (text)
+- latitude (numeric)
+- longitude (numeric)
+- fill_level (int4)
+- status (text) -> empty, half_full, full, overflow, under_maintenance
+- sensor_id (text)
+- area (text)
+- subarea (text)
+- created_at (timestamp)
+- updated_at (timestamp)
+
+4. collections
+- id (uuid, primary key)
+- bin_id (uuid, references bins.id)
+- collector_id (uuid, references auth.users.id or collector user id)
+- pickup_time (timestamp)
+- status (text) -> pending, in_progress, completed, missed
+- created_at (timestamp)
+- updated_at (timestamp)
+
+5. complaints
+- id (uuid, primary key)
+- user_id (uuid, references auth.users.id)
+- bin_id (uuid, references bins.id)
+- details (text)
+- status (text) -> pending, reviewing, resolved
+- created_at (timestamp)
+- updated_at (timestamp)
+
+6. notifications
+- id (uuid, primary key)
+- user_id (uuid, references auth.users.id)
+- title (text)
+- message (text)
+- is_read (bool)
+- type (text)
+- created_at (timestamp)
+
+7. daily_tasks
+- id (uuid, primary key)
+- user_id (uuid, references auth.users.id)
+- bin_id (uuid, references bins.id)
+- otp (text)
+- completed_at (timestamp)
+
+8. disposal_logs
+- id (uuid, primary key)
+- user_id (uuid, references auth.users.id)
+- bin_id (uuid, references bins.id)
+- disposed_at (timestamp)
+
+==================================================
+AUTHENTICATION & ROLE LOGIC
+==================================================
+Implement Supabase authentication with:
+- Login page
+- Registration page for citizen and collector only
+- Admin accounts are not self-registered; they are seeded or manually assigned
+
+After login:
+- Detect the user role from user_roles
+- Redirect citizens to /citizen-dashboard
+- Redirect collectors to /collector-dashboard
+- Redirect admins to /admin-dashboard
+
+Protect all dashboard routes:
+- Only authenticated users can enter protected pages
+- Only the correct role can access its dashboard and internal routes
+- If role does not match, redirect to login or unauthorized page
+- Never default to the wrong role silently
+
+==================================================
+LANDING PAGE / HOME PAGE REQUIREMENTS
+==================================================
+Create a strong, professional homepage that explains the project clearly and drives users to login/register.
+
+Homepage sections should include:
+
+1. Navbar
+- Logo: EcoWaste
+- Links: Home, Features, How It Works, Roles, Contact
+- Buttons: Login, Register
+
+2. Hero Section
+- Strong headline about smart waste management
+- Supporting text about cleaner cities, smart bins, faster collection, and citizen engagement
+- Primary CTA: Get Started
+- Secondary CTA: View Features
+- Add a visual illustration or dashboard preview mockup
+
+3. Live Platform Highlights
+- Cards showing:
+  - Smart Bin Monitoring
+  - Citizen Complaint Reporting
+  - Collector Scheduling
+  - Admin Control Dashboard
+  - Realtime Notifications
+  - Area-Based Waste Tracking
+
+4. How It Works Section
+- Step 1: Citizens monitor bins and report issues
+- Step 2: Admin assigns collectors and manages schedules
+- Step 3: Collectors empty bins and update task status
+- Step 4: System sends realtime updates and keeps records
+
+5. Role-Based Access Section
+Create 3 cards:
+- Citizen
+- Collector
+- Admin
+
+Each card should explain the role and include example capabilities.
+
+6. Smart Monitoring Section
+Show sample waste bin cards with:
+- location
+- area
+- fill level
+- status
+- sensor ID
+Use progress bars and colored status badges.
+
+7. Dashboard Preview Section
+Show screenshots/mock layouts for citizen, collector, and admin dashboards.
+
+8. Statistics Section
+Display clean animated stats such as:
+- Total bins monitored
+- Collections completed
+- Active complaints
+- Registered users
+
+9. FAQ Section
+Examples:
+- How does EcoWaste work?
+- Who can register?
+- How do collectors receive tasks?
+- How are complaints handled?
+- Does the system use realtime notifications?
+
+10. Contact / Footer
+- Project name
+- quick links
+- role access links
+- copyright
+- optional social/contact area
+
+Make the homepage modern, clean, and visually strong. Use gradients, cards, icons, spacing, and responsive layouts.
+
+==================================================
+PAGES TO BUILD
+==================================================
+
+1. Public Pages
+- /
+- /login
+- /register
+- /unauthorized
+- /not-found
+
+2. Citizen Pages
+- /citizen-dashboard
+- complaint form
+- complaint history
+- nearby bins by area
+- daily tasks
+- daily task history
+- notifications
+- profile page
+
+3. Collector Pages
+- /collector-dashboard
+- assigned collections list
+- collection details
+- mark in progress
+- mark completed
+- task history
+- notifications
+- profile page
+
+4. Admin Pages
+- /admin-dashboard
+- bins management
+- add/edit/delete bins
+- complaints management
+- users overview
+- collector scheduling
+- collection monitoring
+- notifications
+- analytics widgets
+
+==================================================
+CITIZEN DASHBOARD REQUIREMENTS
+==================================================
+The citizen dashboard should include:
+
+- Welcome card with user name and area
+- Overview widgets:
+  - nearby bins count
+  - open complaints count
+  - completed daily tasks count
+  - unread notifications count
+
+- Nearby bins section:
+  - show bins filtered by citizen’s profile.area
+  - display location, subarea, fill level, status, sensor ID
+  - use status badges and progress bars
+
+- Complaint submission form:
+  - select related bin
+  - write complaint details
+  - submit to complaints table
+  - default status = pending
+  - create a notification entry for the citizen confirming submission
+
+- Complaint history:
+  - show complaint details, bin, status, created date
+
+- Daily task section:
+  - allow user to submit a daily disposal task
+  - choose bin
+  - store OTP or generated code if needed
+  - show task completion history
+
+- Notifications panel:
+  - show unread/read notifications
+  - allow mark as read
+
+- Profile section:
+  - edit full name
+  - avatar URL
+  - area
+  - email display
+  - save updates to profiles
+
+==================================================
+COLLECTOR DASHBOARD REQUIREMENTS
+==================================================
+The collector dashboard should include:
+
+- Welcome card with collector name
+- Summary widgets:
+  - assigned collections
+  - pending tasks
+  - in-progress tasks
+  - completed tasks
+
+- Assigned collections list:
+  - fetch collections where collector_id = current user
+  - join bin information
+  - show pickup time, location, area, fill level, current status
+
+- Actions:
+  - Mark task as In Progress
+  - Mark task as Completed
+  - When completed:
+    - update collection status = completed
+    - update bin fill_level = 0
+    - optionally set bin status = empty
+    - insert a disposal_logs entry
+
+- Task history:
+  - show all completed and historical collections
+
+- Notifications:
+  - collector-specific alerts
+
+- Optional enhancement:
+  - route summary cards
+  - map placeholder for future route optimization
+
+==================================================
+ADMIN DASHBOARD REQUIREMENTS
+==================================================
+The admin dashboard should be the most powerful role.
+
+Include:
+
+- Top summary cards:
+  - total bins
+  - total complaints
+  - total users
+  - total collectors
+  - pending collections
+  - completed collections
+
+- Bins management:
+  - add bin
+  - edit bin
+  - delete bin
+  - fields: location, latitude, longitude, fill_level, status, sensor_id, area, subarea
+  - show bins in a searchable/sortable table
+
+- Complaints management:
+  - list all complaints with citizen and bin details
+  - filter by status
+  - update complaint status to reviewing or resolved
+  - when complaint is resolved, create a notification for the citizen
+
+- Users overview:
+  - show profiles + user roles
+  - list name, email, area, role
+  - filter by role
+
+- Collector scheduling:
+  - assign a collector to a bin
+  - set pickup time
+  - insert into collections table with default status = pending
+
+- Collection monitoring:
+  - track all collection tasks
+  - filter by pending, in_progress, completed, missed
+
+- Notifications panel:
+  - admin alerts for major actions
+
+- Analytics section:
+  - charts for complaint status
+  - chart for collection statuses
+  - bins by area
+  - fill-level distribution
+
+==================================================
+COMPONENTS TO INCLUDE
+==================================================
+Build reusable components such as:
+- AppLayout
+- Sidebar
+- TopNavbar
+- ProtectedRoute
+- RoleGate
+- StatCard
+- BinCard
+- ComplaintTable
+- CollectionTable
+- NotificationBell
+- ProfileForm
+- AreaBadge
+- StatusBadge
+- DashboardChart
+- EmptyState
+- LoadingState
+- ConfirmDialog
+
+==================================================
+REALTIME REQUIREMENTS
+==================================================
+Use Supabase realtime for:
+- notifications table updates
+- complaint status changes
+- collection status changes if possible
+
+Notification behavior:
+- users should see unread notification count
+- clicking the bell opens a dropdown or panel
+- user can mark notifications as read
+
+==================================================
+UI/UX DESIGN DIRECTION
+==================================================
+Design style:
+- modern civic-tech dashboard
+- clean cards
+- soft shadows
+- rounded corners
+- good use of color without looking childish
+- color palette should suggest sustainability and technology
+- use green, teal, slate, white, and subtle gradients
+- ensure excellent spacing and readability
+- use icons for bins, complaints, schedules, users, alerts
+- responsive sidebars on desktop and drawer menus on mobile
+
+==================================================
+BUSINESS RULES
+==================================================
+- Citizen sees bins based on their area
+- Collector sees only their assigned collection tasks
+- Admin sees all data
+- Complaint submission creates a citizen notification
+- Complaint resolution creates a citizen notification
+- Completing a collection resets bin fill level to 0
+- Daily task completion is recorded per user and bin
+- Admin cannot be self-registered on public registration page
+
+==================================================
+FORM VALIDATION RULES
+==================================================
+- Required fields must be validated
+- Email must be valid
+- Password minimum 8 characters
+- Bin fill level must be between 0 and 100
+- Latitude and longitude must be numeric
+- Complaint details cannot be empty
+- Pickup time must be a valid future or reasonable datetime
+
+==================================================
+ERROR HANDLING
+==================================================
+- Show proper error messages on auth failure
+- Show fallback empty states when no records exist
+- Use loading states on fetches
+- Use toasts for create/update/delete actions
+- Gracefully handle Supabase query failures
+
+==================================================
+FOLDER / ARCHITECTURE PREFERENCE
+==================================================
+Use a clean structure like:
+- components/
+- pages/
+- hooks/
+- lib/
+- integrations/supabase/
+- types/
+- utils/
+
+==================================================
+EXPECTED OUTPUT
+==================================================
+Generate:
+- the full responsive UI
+- page routing
+- Supabase integration hooks
+- protected route system
+- role-based dashboards
+- forms, tables, cards, and charts
+- reusable components
+- clean TypeScript types
+- proper loading, empty, and error states
+
+Do not generate fake backend APIs if Supabase is already being used. Use Supabase directly for auth and database operations.
+
+Make the code ready for expansion and easy to connect to an existing Supabase project.
